@@ -1,0 +1,32 @@
+.venue-list {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.venue-image {
+  width: 100%;
+  height: 230px;
+  transition: transform .3s ease;
+}
+
+.venue-list:hover img {
+  transform: scale(1.5);
+  background-color: grey;
+}
+
+
+
+.venue-category {
+  padding-bottom: 10px;
+}
+
+
+
+.category-name {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+}

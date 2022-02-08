@@ -1,0 +1,47 @@
+<div class="container">
+    <div [formGroup]="form">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="customername" class="form-label">Customer Name</label>
+                <select class="form-select" aria-label="Default select example" formControlName="customerName">
+                    <option *ngFor="let customer of customerList" [value]="customer.name">{{customer.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="amount" class="form-label">Amount</label>
+                <input type="number" class="form-control" id="amount" formControlName="amount">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="!form.valid"
+                    (click)="addNewDebt()">Add</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Debt Amount</th>
+                    <th scope="col">Date </th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let customer of debtCustomerList,let i = index">
+                <tr>
+                    <th scope="row">{{ i+1}}</th>
+                    <td>{{customer.customerName}}</td>
+                    <td>{{customer.amount}}</td>
+                    <td>{{customer.date}}</td>
+                </tr>
+            </tbody>
+            <tbody *ngIf="!(debtCustomerList.length > 0)">
+                <tr> No Record Found</tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+<div class="container">
+    <div [formGroup]="form">
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="customername" class="form-label">Customer Name</label>
+                <select class="form-select" aria-label="Default select example" formControlName="customerName"
+                    (change)="onChange($event)">
+                    <option *ngFor="let customer of customerList" [value]="customer.id">{{customer.name}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="amount" class="form-label"> Total Amount</label>
+                <input type="number" class="form-control" id="totalamount" [ngModel]="totalAmount"
+                    [ngModelOptions]="{standalone: true}" readonly>
+            </div>
+
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-8">
+                <label for="amount" class="form-label"> Current Amount</label>
+                <input type="number" class="form-control" id="currentamount" formControlName="amount">
+            </div>
+
+        </div>
+        <div class="row  ">
+            <div class="col-md-8">
+                <button style="width: 100%;" type="submit" class="btn btn-primary" [disabled]="!form.valid"
+                    (click)="addNewDebt()">Submit</button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Remaining Amount</th>
+                </tr>
+            </thead>
+            <tbody *ngFor="let customer of customerList">
+                <tr>
+                    <th scope="row">{{customer.id}}</th>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.totalDebtAmount}}</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</div>
